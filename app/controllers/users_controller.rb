@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_user_basic, only: [:edit, :update]
+
   def new
   	@user = User.new
   end
@@ -17,10 +19,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path, notice: '基本情報を編集しました'
+    else
+      render 'edit'
+    end
+  end
+
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation,
+                                 :birthday)
   end
+
+  def set_user_basic
+    @user = User.find(params[:id])
+  end
+
 end

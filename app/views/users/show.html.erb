@@ -1,4 +1,39 @@
 <h1>
- <%= gravatar_for @user %>
- <%= @user.name %>
+	<%= gravatar_for @user %>
+	<%= @user.name %>
 </h1>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    基本情報
+  </div>
+
+  <div class="panel-body">
+  	<p>プロフィール</p>
+	  <ul class="list-group">
+	    <li class="list-group-item"><span class="label label-primary">E-Mail</span> <%= @user.email %></li>
+	    <li class="list-group-item"><span class="label label-success">血液型</span> <%= @user.email %></li>
+	    <li class="list-group-item"><span class="label label-info">誕生日</span> <%= @user.email %></li>
+			<li class="list-group-item"><span class="label label-warning">出身地</span> <%= @user.email %></li>
+	  </ul>
+	  <%= link_to "編集" , edit_user_path	 , class: "btn btn-default btn-sm"%>
+
+  </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='user_birthday'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
