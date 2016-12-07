@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem 'jp_prefecture'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

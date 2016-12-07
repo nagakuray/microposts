@@ -5,22 +5,29 @@
 			<%= render 'shared/error_messages' , object: f.object %>
 
 
-			<%= f.label :name %>
+			<%= f.label :name ,"名前" %>
 			<%= f.text_field :name %>
 
 			<%= f.label :email %>
 			<%= f.text_field :email %>
 
-		  <%= f.label :birthday ,"Birthday" %>
-  		<%= f.text_field :birthday %>
 
-
-			<%= f.label :password %>
+			<%= f.label :password ,"パスワード" %>
 			<%= f.password_field :password %>
 
-			<%= f.label :password_confirmation ,"Confirmation" %>
+			<%= f.label :password_confirmation ,"パスワード確認" %>
 			<%= f.password_field :password_confirmation %>
 
+		  <%= f.label :birthday ,"お誕生日" %>
+  		<%= f.text_field :birthday ,class: "date" %>
+
+			<%= f.label :blood ,"血液型" %><br>
+			<%= f.select :blood, {"A型":"A型", "B型":"B型","O型":"O型","AB型":"AB型","不明":"不明"} %><br>
+			<br>
+
+			<%= f.label :birthplace ,"出身地" %><br>
+			<%= f.collection_select :birthplace, JpPrefecture::Prefecture.all, :name, :name , include_blank: true%><br>
+			<br>
 
 			<%= f.submit "プロフィール更新" 	, class: "btn btn-large btn-primary" %>
 

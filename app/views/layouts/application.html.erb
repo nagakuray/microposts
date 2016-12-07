@@ -5,9 +5,10 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
 	<script type="text/javascript">
     $(function () {
-      $('#user_birthday').datetimepicker();
+      $('#user_birthday').datetimepicker({format: 'YYYY-MM-DD',viewMode: 'years'});
     });
   </script>
 
