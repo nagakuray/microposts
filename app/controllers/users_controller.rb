@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user_basic, only: [:edit, :update]
+  before_action :block_invalid_user, only: [:edit, :update]
 
   def new
   	@user = User.new
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @current_user = current_user
     @age = calc_user_age
   end
 
@@ -26,7 +28,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path, notice: '基本情報を編集しました'
+      flash[:info] = "#{@user.name}の基本情報を編集しました "
+      redirect_to user_path
     else
       render 'edit'
     end
@@ -45,6 +48,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # ログインユーザと一致しない場合はroot_pathにリダイレクトする
+  def block_invalid_user
+    if current_user != @user
+      redirect_to root_path
+    end
+  end
+
   # 年齢を計算する
   def calc_user_age
     date_format = "%Y%m%d"
@@ -53,7 +63,8 @@ class UsersController < ApplicationController
       ""
     else
       age = (Date.today.strftime(date_format).to_i - user_birthday.strftime(date_format).to_i)/10000
-      ageString = "#{age} さい"
+      age_string = "#{age} さい"
+      age_string
     end
 
   end
