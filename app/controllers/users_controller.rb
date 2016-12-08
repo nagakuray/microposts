@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-    @current_user = current_user
     @age = calc_user_age
   end
 
