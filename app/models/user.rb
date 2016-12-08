@@ -15,4 +15,6 @@ class User < ActiveRecord::Base
   validates :birthday, presence: false, length: { maximum: 10 }
 
   has_secure_password
+  has_many :microposts
+
 end

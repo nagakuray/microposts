@@ -1,47 +1,32 @@
-<h1>
-	<%= gravatar_for @user %>
-	<%= @user.name %>
-</h1>
-
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h2 id="panel-h2">基本情報</h2>
-  </div>
-
-  <div class="panel-body">
-
-    <h3>
-    	<span class="label label-primary">E-Mail</span>
-    	<span class="label label-default"><%= @user.email %></span>
-    </h3>
-
-		<h3>
-	    <span class="label label-success">血液型</span>
-	    <span class="label label-default"><%= @user.blood %></span>
-	  </h3>
-  
-
-		<h3>	 
-  		<span class="label label-info label-lg">誕生日</span>	
-  	 	<span class="label label-default"><%= @user.birthday %></span>
-  	</h3>
-
-		<h3>	 
-  		<span class="label label-info label-lg">年　齢</span>	
-  	 	<span class="label label-default"><%= @age %></span>
-  	</h3>
-
-		<h3>
-			<span class="label label-warning">出身地</span>
-			<span class="label label-default"><%= @user.birthplace %></span>
-			</p>
-		</h3>
-
+<div claas="row">
+  <aside class="col-md-4">
+    <section class="user_info">    
+      <h1>
+      	<%= gravatar_for @user %>
+      	<%= @user.name %>
+      </h1>
+    </section>
+    <p>
+      <span class="label label-danger">E-Mail</span>
+      <span class="label label-default"><%= @user.email %></span><br>
+      <span class="label label-success">血液型</span>
+      <span class="label label-default"><%= @user.blood %></span><br>
+      <span class="label label-info label-lg">誕生日</span>  
+      <span class="label label-default"><%= @user.birthday %></span><br>
+      <span class="label label-info label-lg">年　齢</span>  
+      <span class="label label-default"><%= @age %></span><br>
+      <span class="label label-warning">出身地</span>
+      <span class="label label-default"><%= @user.birthplace %></span>
+    </p>
+  </aside>
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+    <% end %>
   </div>
 </div>
 
-
-<div class="container">
-
-</div>
 

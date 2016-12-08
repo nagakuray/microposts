@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @age = calc_user_age
+    @microposts = @user.microposts.order(created_at: :desc)
   end
 
   def create
