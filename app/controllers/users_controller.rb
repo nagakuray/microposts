@@ -35,6 +35,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def followings
+    @user = User.find(params[:id])
+    @users = @user.following_users
+    @title = "Followings"
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.follower_users
+    @title = "Followers"
+  end
+
+
 
   private
 
@@ -66,6 +79,5 @@ class UsersController < ApplicationController
       age_string = "#{age} さい"
       age_string
     end
-
   end
 end

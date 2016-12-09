@@ -3,7 +3,7 @@
     <section class="user_info">    
       <h1>
       	<%= gravatar_for @user %>
-      	<%= @user.name %>   
+      	<%= @user.name %>
       </h1>
     </section>
     <p>
@@ -20,6 +20,7 @@
     </p>
   </aside>
   <div class="col-md-8">
+
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
       <div class="btn-group" role="group">
         <%= link_to "フォロー中", followings_user_path , class: "btn btn-success" %>
@@ -28,15 +29,16 @@
          <%= link_to "フォロワー", followers_user_path , class: "btn btn-warning" %>
       </div>
     </div>
-    <br>
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-       <%= render @microposts %>
-      </ol>
-    <% end %>
+
+    <h3><%= @title %> (<%= @users.count %>)</h3>
+    <ol class="microposts">
+      <% @users.each do |user| %>
+        <li id="user-<%= user.id %>">
+          <%= link_to gravatar_for(user, size: 50), user %>
+          <span class="user"><%= link_to user.name, user %></span>
+          <div class="clearfix"></div>
+        </li>
+      <% end %>
+    </ol>
   </div>
 </div>
-
-
