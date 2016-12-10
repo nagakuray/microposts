@@ -20,7 +20,7 @@ gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'jp_prefecture'
 gem 'kaminari'
-
+gem 'data-confirm-modal'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
