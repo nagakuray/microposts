@@ -18,6 +18,8 @@ gem 'rb-readline'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'jp_prefecture'
+gem 'kaminari'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
