@@ -4,30 +4,39 @@
 		<%= form_for(@user) do |f| %>
 			<%= render 'shared/error_messages' , object: f.object %>
 
+			<div class="form-group">
+				<%= f.label :name ,"名前" %>
+				<%= f.text_field :name %>
+			</div>
+			<div class="form-group">
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+			</div>
 
-			<%= f.label :name ,"名前" %>
-			<%= f.text_field :name %>
+			<div class="form-group">
+				<%= f.label :password ,"パスワード" %>
+				<%= f.password_field :password %>
+			</div>
 
-			<%= f.label :email %>
-			<%= f.text_field :email %>
+			<div class="form-group">
+				<%= f.label :password_confirmation ,"パスワード確認" %>
+				<%= f.password_field :password_confirmation, class: 'form-control' %>
+			</div>
 
+			<div class="form-group">
+			  <%= f.label :birthday ,"お誕生日" %>
+ 		 		<%= f.text_field :birthday ,class: "date form-control" %>
+ 		 	</div>
 
-			<%= f.label :password ,"パスワード" %>
-			<%= f.password_field :password %>
-
-			<%= f.label :password_confirmation ,"パスワード確認" %>
-			<%= f.password_field :password_confirmation %>
-
-		  <%= f.label :birthday ,"お誕生日" %>
-  		<%= f.text_field :birthday ,class: "date" %>
-
-			<%= f.label :blood ,"血液型" %><br>
-			<%= f.select :blood, {"A型":"A型", "B型":"B型","O型":"O型","AB型":"AB型","不明":"不明"} %><br>
-			<br>
-
-			<%= f.label :birthplace ,"出身地" %><br>
-			<%= f.collection_select :birthplace, JpPrefecture::Prefecture.all, :name, :name , include_blank: true%><br>
-			<br>
+ 		 	<div class="form-group">
+				<%= f.label :blood ,"血液型" %><br>
+				<%= f.select :blood, {"A型":"A型", "B型":"B型","O型":"O型","AB型":"AB型","不明":"不明"} , class: 'form-control'%>
+			</div>
+	
+			<div class="form-group">
+				<%= f.label :birthplace ,"出身地" %><br>
+				<%= f.collection_select :birthplace, JpPrefecture::Prefecture.all, :name, :name , include_blank: true , class: 'form-control' %><br>
+			</div>
 
 			<%= f.submit "プロフィール更新" 	, class: "btn btn-large btn-primary" %>
 

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @age = calc_user_age
     @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(25)
-    @micropost = current_user.microposts.build
+    @micropost = @user.microposts.build
 
   end
 
